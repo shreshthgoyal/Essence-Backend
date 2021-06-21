@@ -19,55 +19,6 @@ exports.register = async (req, res) => {
             });
         }
         else {
-
-            createEmailTemplate = () => {
-                const html =
-                    `
-                   <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
-                     <tr>
-                       <br>
-                       <td class="container">
-                         <div class="content" style="text-align:center">
-                           <table role="presentation" class="main">
-                             <tr>
-                               <td class="wrapper">
-                                 <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="font-family: Monospace, Times, serif">
-                                   <tr>
-                                     <td>
-                                      <p>Welcome astronaut, jumping from planets to galaxies,
-                                      busting aliens, warping through wormholes or grabbing that galactic burger 
-                                      you sure had a rough day! </p>
-                                      <hr>
-                                       <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
-                                         <tbody>
-                                           <tr>
-                                             <td align="left">
-                                               <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-                                               </table>
-                                             </td>
-                                           </tr>
-                                         </tbody>
-                                       </table>
-                                       <p style="font-size: large;">But aliens have snuck in .·¯~(>▂<)~¯·.  to pass through you </p>
-                                       <br>
-                                           <h6 style="text-align:center;font-family: Helvetica, sans-serif;">
-                                           <a href="https:                                                       //localhost:5000/user/verify/${token}"><button>You must verify your identity!</button></a>
-                                           </h6>
-                                           <p style="font-size: large;"> to gain access to the spaceship and prepare for another day of space-faring.<br><br>
-                                           </p><p>May the stars be with you!✨</p>
-                                           <hr><hr>
-                                       <br>
-                                       <p style="text-align:center">🚀🚀🚀</p>
-                                     </td>
-                                   </tr>
-                                 </table>
-                               </td>
-                             </tr>
-                           </table>
-                       `
-                return html;
-            }
-
             let schema = new passwordValidator();                                                                // Validating Password conditions
 
             schema
@@ -119,7 +70,7 @@ exports.register = async (req, res) => {
                         })
 
                     if (flag) {                               
-                        const token = jwt.sign(                                                  //Signing a jwt token
+                        const token = jwt.sign(                                                  //Signing a jwt token to verify the user
                             {
                                 email: user.email
                             },
