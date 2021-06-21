@@ -6,6 +6,7 @@ const userauth = require("./routes/auth");
 const client = require("./configs/database");
 const helmet = require("helmet");
 const cookieParser = require('cookie-parser');
+const compression = require('compression')
 
 //added middlewares
 
@@ -14,6 +15,7 @@ app.use(express.json());
 app.use(cors());
 app.use(cookieParser());
 app.use(helmet());
+app.use(compression());
 
 const port = process.env.PORT || 5000;
 

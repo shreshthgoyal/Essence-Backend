@@ -5,7 +5,7 @@ const client = require("../configs/database");
 //Verifying the JSON web token
 
 exports.verify = (req,res,next) => {
-    const token = req.headers.authorization;
+    const token = req.cookies;
   
     jwt.verify(token,process.env.SECRET_KEY, (err,decoded)=>{
         if(err)
@@ -16,7 +16,7 @@ exports.verify = (req,res,next) => {
         const userEmail = decoded.email;
 
         client
-        .query(`SELECT * FROM users WHERE email = '${userEmail}';`)
+        .query(`SELECT * FROM users WHERE email = $1;`,[userEmail])
         .then((info) => {
             if (info.rows.length === 0) {
                 res.status(400).json({
