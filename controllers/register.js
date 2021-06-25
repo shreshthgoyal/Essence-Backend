@@ -56,7 +56,7 @@ exports.register = async (req, res) => {
                                                                                                                  //Inserting data into the database
 
                     client
-                        .query(`INSERT INTO users (id, name, email, college, phonenumber, password) VALUES ('${user.id}','${user.name}', '${user.email}', '${user.college}', '${user.phonenumber}', '${user.password}');`, (err) => {
+                        .query(`INSERT INTO users (id, name, email, college, phonenumber, password) VALUES ($1,$2,$3,$4,$5,$6);`,[user.id,name,email,college,phonenumber,user.password], (err) => {
                             if (err) {
                                 flag = 0;                                                                        //If user is not inserted is not inserted to database assigning flag as 0/false.
                                 console.error(err);
@@ -70,7 +70,7 @@ exports.register = async (req, res) => {
                         })
 
                     if (flag) {                               
-                        const token = jwt.sign(                                                  //Signing a jwt token to verify the user
+                        const token = jwt.sign(                                                  //Signing a jwt token
                             {
                                 email: user.email
                             },
