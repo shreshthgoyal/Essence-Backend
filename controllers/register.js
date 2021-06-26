@@ -56,7 +56,7 @@ exports.register = async (req, res) => {
                                                                                                                  //Inserting data into the database
 
                     client
-                        .query(`INSERT INTO users (id, name, email, college, phonenumber, password) VALUES ($1,$2,$3,$4,$5,$6);`,[user.id,name,email,college,phonenumber,user.password], (err) => {
+                        .query(`INSERT INTO users (id, name, email, college, phonenumber, password) VALUES ($1,$2,$3,$4,$5,$6);`,[user.id,user.name,user.email,user.college,user.phonenumber,user.password], (err) => {
                             if (err) {
                                 flag = 0;                                                                        //If user is not inserted is not inserted to database assigning flag as 0/false.
                                 console.error(err);
@@ -117,7 +117,7 @@ exports.register = async (req, res) => {
                                                    <p style="font-size: large;">But aliens have snuck in .·¯~(>▂<)~¯·.  to pass through you </p>
                                                    <br>
                                                        <h6 style="text-align:center;font-family: Helvetica, sans-serif;">
-                                                       <a href="https:                                                       //localhost:5000/user/verify/${token}"><button>You must verify your identity!</button></a>
+                                                       <a href="https://essencefest.netlify.app/verification/index.html?token=${token}"><button>You must verify your identity!</button></a>
                                                        </h6>
                                                        <p style="font-size: large;"> to gain access to the spaceship and prepare for another day of space-faring.<br><br>
                                                        </p><p>May the stars be with you!✨</p>
