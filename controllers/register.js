@@ -4,8 +4,6 @@ const nodemailer = require("nodemailer");
 const jwt = require("jsonwebtoken");
 const passwordValidator = require('password-validator');
 
-var otp = Math.floor(Math.random() * 9000) + 1000;                                                             //Randomly generated string
-
                                                                                                                  //Registration Function
 exports.register = async (req, res) => {
     const { name, email, college, phonenumber, password } = req.body;
@@ -43,7 +41,6 @@ exports.register = async (req, res) => {
                         });
 
                     const user = {
-                        id: otp,
                         name,
                         email,
                         college,
@@ -56,7 +53,7 @@ exports.register = async (req, res) => {
                                                                                                                  //Inserting data into the database
 
                     client
-                        .query(`INSERT INTO users (id, name, email, college, phonenumber, password) VALUES ($1,$2,$3,$4,$5,$6);`,[user.id,user.name,user.email,user.college,user.phonenumber,user.password], (err) => {
+                        .query(`INSERT INTO users (name, email, college, phonenumber, password) VALUES ($1,$2,$3,$4,$5);`,[user.name,user.email,user.college,user.phonenumber,user.password], (err) => {
                             if (err) {
                                 flag = 0;                                                                        //If user is not inserted is not inserted to database assigning flag as 0/false.
                                 console.error(err);
@@ -65,7 +62,7 @@ exports.register = async (req, res) => {
                                 })
                             }
                             else {
-                                flag=1;
+                                flag = 1;
                                 res.status(200).send({ message: 'User added to database, not verified' });
                             }
                         })
