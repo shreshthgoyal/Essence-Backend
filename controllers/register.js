@@ -65,6 +65,7 @@ exports.register = async (req, res) => {
                                 })
                             }
                             else {
+                                flag=1;
                                 res.status(200).send({ message: 'User added to database, not verified' });
                             }
                         })
