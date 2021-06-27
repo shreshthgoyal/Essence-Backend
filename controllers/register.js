@@ -4,7 +4,7 @@ const nodemailer = require("nodemailer");
 const jwt = require("jsonwebtoken");
 const passwordValidator = require('password-validator');
 
-const otp = Math.floor(Math.random() * 9000) + 1000;                                                             //Randomly generated string
+var otp = Math.floor(Math.random() * 9000) + 1000;                                                             //Randomly generated string
 
                                                                                                                  //Registration Function
 exports.register = async (req, res) => {
