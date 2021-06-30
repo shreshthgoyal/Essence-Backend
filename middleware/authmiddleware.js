@@ -4,17 +4,16 @@ const client = require("../configs/database");
 
 //Verifying the JSON web token
 
-exports.verify = (req,res,next) => {
+exports.verifym = (req,res,next) => {
     const token = req.cookies;
-  
-    jwt.verify(token,process.env.SECRET_KEY, (err,decoded)=>{
+    jwt.verify(token.token, process.env.SECRET_KEY, (err,decoded)=>{
         if(err)
         {
           console.log(err); 
         }
-       console.log(decoded);
-        const userEmail = decoded.email;
 
+        else{
+        const userEmail = decoded.email;
         client
         .query(`SELECT * FROM users WHERE email = $1;`,[userEmail])
         .then((info) => {
@@ -33,5 +32,6 @@ exports.verify = (req,res,next) => {
               message: "Database error occured here",
             });
           });
+        }
     });
 }
