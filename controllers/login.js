@@ -29,7 +29,7 @@ exports.login = async (req, res) => {
                             );
                             res.status(200)
                                 .cookie("token", token, {                                                      //Assigning the token to a cookie
-                                    sameSite: 'none', secure: true,
+                                    samesite: 'none', secure: true,
                                     expires: new Date(new Date().getTime() + 5 * 10000),
                                     httpOnly: true,
                                 })
