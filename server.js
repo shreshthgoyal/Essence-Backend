@@ -17,6 +17,12 @@ app.use(cookieParser());
 app.use(helmet());
 app.use(compression());
 
+app.use(function(req, res, next) {  
+  res.header('Access-Control-Allow-Origin', req.headers.origin);
+  res.header("Access-Control-Allow-Credentials", true);
+  next();
+}); 
+
 const port = process.env.PORT || 5000;
 
 app.get("/", (req, res) => {
