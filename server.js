@@ -15,9 +15,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(helmet());
 app.use(compression());
-
-
-app.use(cors({origin: "https://essencefest.netlify.app", credentials: true}));
+app.use(cors());
 
 
 const port = process.env.PORT || 5000;
