@@ -3,6 +3,7 @@ require("./configs/dotenv");
 const express = require("express");
 const cors = require("cors");
 const userauth = require("./routes/auth");
+const admin = require("./routes/admin");
 const client = require("./configs/database");
 const helmet = require("helmet");
 const cookieParser = require('cookie-parser');
@@ -11,12 +12,11 @@ const compression = require('compression')
 //added middlewares
 
 const app = express();                          //Initialized express
-app.use(express.json());                     
+app.use(express.json()); 
 app.use(cookieParser());
+app.use(cors());
 app.use(helmet());
 app.use(compression());
-app.use(cors());
-
 
 const port = process.env.PORT || 5000;
 
@@ -25,6 +25,7 @@ app.get("/", (req, res) => {
 })
 
 app.use("/user", userauth);                      //Route for /user endpoint of API
+app.use("/admin", admin);                      //Route for /admin endpoint of API
 
 client.connect((err) => {
   if (err) {
