@@ -1,12 +1,12 @@
 const jwt = require("jsonwebtoken");
 const client = require("../configs/database");
 
-
 //Verifying the JSON web token
 
 exports.verifym = (req,res,next) => {
-    const token = req.cookies;
-    jwt.verify(token.token, process.env.SECRET_KEY, (err,decoded)=>{
+       const token = req.headers.authorization;
+
+    jwt.verify(token, process.env.SECRET_KEY, (err,decoded)=>{
         if(err)
         {
           console.log(err); 
