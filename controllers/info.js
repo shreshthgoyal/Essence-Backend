@@ -4,6 +4,7 @@ exports.info = async (req, res) => {
     try {
         const data = await client.query(`SELECT * FROM users WHERE email = '${req.email}'`)
             const userData = data.rows;
+        console.log(userData)
             const filteredData = userData.map((user) => {
                 return {
                     name: user.name,
