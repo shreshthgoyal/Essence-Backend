@@ -6,7 +6,7 @@ const client = require("../configs/database");
 exports.verifym = (req,res,next) => {
     const token = req.headers.authorization;
        
-    jwt.verify(token.token, process.env.SECRET_KEY, (err,decoded)=>{
+    jwt.verify(token, process.env.SECRET_KEY, (err,decoded)=>{
         if(err)
         {
           console.log(err); 
