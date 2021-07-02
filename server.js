@@ -3,6 +3,7 @@ require("./configs/dotenv");
 const express = require("express");
 const cors = require("cors");
 const userauth = require("./routes/auth");
+const events = require("./routes/events");
 const client = require("./configs/database");
 const helmet = require("helmet");
 const cookieParser = require('cookie-parser');
@@ -25,6 +26,7 @@ app.get("/", (req, res) => {
 
 app.use("/user", userauth);                      //Route for /user endpoint of API
 
+app.use("/events", events);                       //Route for event registration and unregistration
 client.connect((err) => {
   if (err) {
     console.log(err);

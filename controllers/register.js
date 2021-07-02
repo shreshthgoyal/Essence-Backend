@@ -77,7 +77,7 @@ exports.register = async (req, res) => {
             
                         res.status(200)
                             .cookie("token", token, {                                            //Assigning token to a cookie
-                                sameSite: 'none', secure: true,
+                                // sameSite: 'none', secure: false,
                                 expires: new Date(new Date().getTime() + 5 * 10000),
                                 httpOnly: true,
                             })

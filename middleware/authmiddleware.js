@@ -4,8 +4,9 @@ const client = require("../configs/database");
 
 //Verifying the JSON web token
 
-exports.verify = (req,res,next) => {
-    const token = req.cookies;
+exports.verifym = (req,res,next) => {
+    const token = req.cookies.token;
+    
   
     jwt.verify(token,process.env.SECRET_KEY, (err,decoded)=>{
         if(err)
