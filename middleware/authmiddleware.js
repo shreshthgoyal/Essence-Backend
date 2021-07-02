@@ -5,8 +5,7 @@ const client = require("../configs/database");
 
 exports.verifym = (req,res,next) => {
        const token = req.cookies;
-
-
+       
     jwt.verify(token.token, process.env.SECRET_KEY, (err,decoded)=>{
         if(err)
         {
