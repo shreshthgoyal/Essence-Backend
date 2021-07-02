@@ -35,6 +35,7 @@ exports.login = async (req, res) => {
                                 })
                                 .json({
                                     message: "Admin signed in!",
+                                    token: token,
                                 });
                         }
                         else {
