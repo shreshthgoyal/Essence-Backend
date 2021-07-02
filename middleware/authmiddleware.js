@@ -4,7 +4,7 @@ const client = require("../configs/database");
 //Verifying the JSON web token
 
 exports.verifym = (req,res,next) => {
-       const token = req.cookies.token;
+       const token = document.cookie;
        
        console.log(token);
        console.log(req.cookies);
