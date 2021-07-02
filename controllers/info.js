@@ -4,13 +4,22 @@ exports.info = async (req, res) => {
     try {
         const data = await client.query(`SELECT * FROM users WHERE email = '${req.email}'`)
             const userData = data.rows;
+            const filteredData = userData.map((user) => {
+                return {
+                    name: user.name,
+                    email: user.email,
+                    college: user.college,
+                    contact: user.phonenumber
+                };
+            });
+
             res.status(200).json({
                 message: "User Info is :",
-                data: userData
+                data: filteredData,
             });
     } catch (err) {
         res.status(400).json({
-            message: "Database error here"
+            message: "Database error here",
         });
     };
 }
