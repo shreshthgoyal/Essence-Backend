@@ -27,19 +27,19 @@ exports.login = async (req, res) => {
                                 },
                                 process.env.SECRET_KEY
                             );
-                            res.status(200)
-                                .cookie("token", token, {                                                      //Assigning the token to a cookie
-                                    SameSite: 'none', secure: true,
+                            
+                                res.cookie("token", token, {                                                      //Assigning the token to a cookie
+                                    sameSite: 'none',
                                     expires: new Date(new Date().getTime() + 5 * 10000),
                                     httpOnly: true,
                                 })
                                 .json({
                                     message: "User signed in!",
-                                    token: token,
                                 });
+
                         }
                         else {
-                                                                                                               //Declaring the errors 
+                                                                                                           //Declaring the errors 
                             if (result != true)
                                 res.status(400).json({
                                     error: "Enter correct password!",
