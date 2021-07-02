@@ -30,7 +30,7 @@ exports.eventUnregister = (req, res) => {
            
        }).then(() => {
            client
-           .query(`DELETE FROM testing WHERE id = $1 AND eventid = $2;`, [userid,eventid], (err)=>{
+           .query(`DELETE FROM event_registration WHERE user_id = $1 AND event_id = $2;`, [userid,eventid], (err)=>{
                if(err){
                    console.error(err);
                    res.status(500).json({

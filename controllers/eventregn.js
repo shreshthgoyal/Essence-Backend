@@ -31,7 +31,7 @@ exports.eventRegister =  (req,res) => {
        }).then(() => {
 
         
-        client.query(`SELECT * FROM testing WHERE id = ${userid} AND eventid = ${eventid};`)                    //Checking if user has already registered for event 
+        client.query(`SELECT * FROM event_registration WHERE user_id = $1 AND event_id = $2;`, [userid,eventid])                    //Checking if user has already registered for event 
                 .then((data) => {
                     arr = data.rows;
 
@@ -43,7 +43,7 @@ exports.eventRegister =  (req,res) => {
 
                     else {
                       client
-                          .query(`INSERT INTO testing (id, eventid) VALUES (${userid}, ${eventid});`, (err) => {
+                          .query(`INSERT INTO event_registration (user_id, event_id) VALUES ($1, $2);`, [userid,eventid], (err) => {
                             if(err){
                               console.error(err);
                               res.status(500).json({
