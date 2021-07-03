@@ -2,7 +2,7 @@ const client = require("../configs/database");
 
 exports.events = async (req, res) => {
     try {
-        const data = await client.query(`SELECT event_id, event_name, date ,users.id, name, college from events inner join testing on event_id = eventid inner join users on users.id = testing.id `)
+        const data = await client.query(`SELECT name, event_name from events inner join event_registration on events.event_id = event_registration.event_id inner join users on users.id = user_id `)
             const userData = data.rows;
             const filteredData = userData.map((info) => {
                 return {
