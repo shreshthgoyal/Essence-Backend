@@ -2,7 +2,7 @@ const client = require("../configs/database");
 
 exports.pronites = async (req, res) => {
     try {
-        const data = await client.query(`SELECT pronite_id, pronite_name, fee, date ,users.id, name, college from pronite inner join testing on pronite_id = proniteid inner join users on users.id = testing.id `)
+        const data = await client.query(`SELECT name, pronite_name from pronite inner join pronite_registration on pronite.pronite_id = pronite_registration.pronite_id inner join users on users.id = user_id `)
             const userData = data.rows;
             const filteredData = userData.map((info) => {
                 return {
