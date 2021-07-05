@@ -4,6 +4,7 @@ const express = require("express");
 const cors = require("cors");
 const userauth = require("./routes/auth");
 const admin = require("./routes/admin");
+const events = require("./routes/events");
 const client = require("./configs/database");
 const helmet = require("helmet");
 const cookieParser = require('cookie-parser');
@@ -29,6 +30,7 @@ app.get("/", (req, res) => {
 
 app.use("/user", userauth);                      //Route for /user endpoint of API
 app.use("/admin", admin);                      //Route for /admin endpoint of API
+app.use("/events", events);                       //Route for /events endpoint of API
 
 client.connect((err) => {
   if (err) {
