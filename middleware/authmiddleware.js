@@ -7,7 +7,7 @@ exports.verifym = (req,res,next) => {
        const token = req.headers.authorization;
        if(!token){
         res.status(401).json({
-          message: "Invalid token! Please signin/signup first.",
+          error: "Invalid token! Please signin/signup first.",
         });
        }
        
@@ -16,7 +16,7 @@ exports.verifym = (req,res,next) => {
         {
           console.log(err); 
           res.status(400).json({
-            message: "Invalid token",
+            error: "Invalid token",
           });
         }
 
@@ -27,7 +27,7 @@ exports.verifym = (req,res,next) => {
         .then((info) => {
             if (info.rows.length === 0) {
                  res.status(400).json({
-                  message: "Invalid token",
+                  error: "Invalid token",
                 });
               } else {
                 req.email = userEmail;
@@ -38,7 +38,7 @@ exports.verifym = (req,res,next) => {
         .catch((err) => {
           console.log(err);
               res.status(500).json({
-              message: "Database error occured here",
+              error: "Database error occured here",
             });
           });
         }
