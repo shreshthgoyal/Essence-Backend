@@ -9,7 +9,7 @@ exports.eventUnregister = async (req, res) => {                //Unregistering u
 
 
   try {
-    const data = await client.query(`DELETE FROM event_registration WHERE user_id = $1 AND event_id = $2;`, [userid, eventid], (err) => {   //Deleting userID and evventID row from database for the user
+    const data = await client.query(`DELETE FROM event_registration WHERE user_id = $1 AND event_id = $2;`, [userid, eventid], (err) => {   //Deleting userID and eventID row from database for the user
       if (err) {
         console.error(err);
         res.status(500).json({
