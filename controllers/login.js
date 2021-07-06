@@ -28,8 +28,7 @@ exports.login = async (req, res) => {
                                 process.env.SECRET_KEY
                             );
                             
-                                res.
-                                .json({
+                                res.status(200).json({
                                     message: "User signed in!",
                                     token: token,
                                 });
