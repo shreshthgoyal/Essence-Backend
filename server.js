@@ -5,6 +5,8 @@ const cors = require("cors");
 const userauth = require("./routes/auth");
 const admin = require("./routes/admin");
 const events = require("./routes/events");
+const pronites = require("./routes/pronites");
+const goodies = require("./routes/goodies");
 const client = require("./configs/database");
 const helmet = require("helmet");
 const cookieParser = require('cookie-parser');
@@ -28,6 +30,9 @@ app.get("/", (req, res) => {
 app.use("/user", userauth);                      //Route for /user endpoint of API
 app.use("/admin", admin);                      //Route for /admin endpoint of API
 app.use("/events", events);                       //Route for /events endpoint of API
+app.use("/pronites", pronites);                //Route for pronite registration
+app.use("/goodies", goodies);                   //Route for goodies purchase
+
 
 client.connect((err) => {
   if (err) {
