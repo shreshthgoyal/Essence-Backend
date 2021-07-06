@@ -16,7 +16,7 @@ exports.verifym = (req,res,next) => {
         {
           console.log(err); 
           res.status(400).json({
-            error: "Error Occured, Try again!",
+            error: "User not Signed in, Sign in First.",
           });
         }
 
