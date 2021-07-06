@@ -1,6 +1,6 @@
 const client = require("../configs/database");
 
-exports.pronite = async (req, res) => {
+exports.pronite = async (req, res) => {                              //Pronite function for checking which user is registered for which event for user panel
     try {
         const data = await client.query(`select pronite_name from pronite inner join pronite_registration on pronite.pronite_id = pronite_registration.pronite_id inner join users on users.id = user_id where email = $1`, [req.email])
             const userData = data.rows;

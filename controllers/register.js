@@ -4,7 +4,7 @@ const nodemailer = require("nodemailer");
 const jwt = require("jsonwebtoken");
 const passwordValidator = require('password-validator');
 
-                                                                                                                 //Registration Function
+//Registration Function
 exports.register = async (req, res) => {
     const { name, email, college, phonenumber, password } = req.body;
     try {

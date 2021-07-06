@@ -1,6 +1,6 @@
 const client = require("../configs/database");
 
-exports.info = async (req, res) => {
+exports.info = async (req, res) => {                        //Info function for checking info about user for user panel
     try {
         const data = await client.query(`SELECT * FROM users WHERE email = '${req.email}'`)
             const userData = data.rows;

@@ -1,6 +1,6 @@
 const client = require("../configs/database");
 
-exports.users = async (req, res) => {
+exports.users = async (req, res) => {                              //Users function to get all the information about users for admin panel
     try {
         const data = await client.query(`SELECT * FROM users WHERE isadmin = false AND verified = true;`)
             const userData = data.rows;

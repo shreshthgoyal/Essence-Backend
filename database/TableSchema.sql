@@ -1,3 +1,5 @@
+-- Postgres Database Schema
+
 CREATE TABLE "users" (
   "verified" boolean,
   "id" SERIAL PRIMARY KEY,

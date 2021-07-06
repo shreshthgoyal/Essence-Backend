@@ -10,7 +10,7 @@ const helmet = require("helmet");
 const cookieParser = require('cookie-parser');
 const compression = require('compression')
 
-//added middlewares
+//Middlewares
 
 const app = express();                          //Initialized express
 app.use(express.json()); 
@@ -25,11 +25,11 @@ app.get("/", (req, res) => {
   res.status(200).send("Engine Started, Ready to take off!");
 })
 
-app.use("/user", userauth);                      //Route for /user endpoint of API
+app.use("/user", userauth);                    //Route for /user endpoint of API
 app.use("/admin", admin);                      //Route for /admin endpoint of API
-app.use("/events", events);                       //Route for /events endpoint of API
+app.use("/events", events);                    //Route for /events endpoint of API
 
-client.connect((err) => {
+client.connect((err) => {                         //Connected Database
   if (err) {
     console.log(err);
   }
