@@ -28,11 +28,7 @@ exports.login = async (req, res) => {
                                 process.env.SECRET_KEY
                             );
                             
-                                res.cookie("token", token, {                                                      //Assigning the token to a cookie
-                                    sameSite: 'none',
-                                    expires: new Date(new Date().getTime() + 5 * 10000),
-                                    httpOnly: true,
-                                })
+                                res.
                                 .json({
                                     message: "User signed in!",
                                     token: token,
