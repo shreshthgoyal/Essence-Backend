@@ -7,7 +7,7 @@ exports.verifym = (req,res,next) => {
        const token = req.headers.authorization;
        if(!token){
         res.status(401).json({
-          error: "Invalid token! Please signin/signup first.",
+          error: "User not Signed in, Sign in First.",
         });
        }
        
@@ -16,7 +16,7 @@ exports.verifym = (req,res,next) => {
         {
           console.log(err); 
           res.status(400).json({
-            error: "Invalid token",
+            error: "Error Occured, Try again!",
           });
         }
 
@@ -27,7 +27,7 @@ exports.verifym = (req,res,next) => {
         .then((info) => {
             if (info.rows.length === 0) {
                  res.status(400).json({
-                  error: "Invalid token",
+                  error: "User not registered. Register yourself first.",
                 });
               } else {
                 req.email = userEmail;
