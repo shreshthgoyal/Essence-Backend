@@ -9,7 +9,19 @@ exports.proniteUnregister = async (req, res) => {         //Unregistring from pr
   const proniteid = req.proniteid;
 
   try {
-    const data = await client.query(                                       //Deleting userID and proniteID row from database for the user
+    const data = await client.query(
+      `SELECT * FROM pronite_registration WHERE user_id = $1 AND pronite_id = $2;`,
+      [userid, proniteid]
+    );
+
+    arr = data.rows;
+
+    if (arr.length === 0) {
+      res.status(400).json({
+        error: "User is not registered for the show",
+      });
+    } else {
+    client.query(                                       //Deleting userID and proniteID row from database for the user
       `DELETE FROM pronite_registration WHERE user_id = $1 AND pronite_id = $2;`,
       [userid, proniteid],
       (err) => {
@@ -25,7 +37,7 @@ exports.proniteUnregister = async (req, res) => {         //Unregistring from pr
         }
       }
     );
-  } catch (err) {                           //Handling error if there is any in this function
+  } } catch (err) {                           //Handling error if there is any in this function
     console.log(err);
     res.status(500).json({
       error: "Database error occured here",
