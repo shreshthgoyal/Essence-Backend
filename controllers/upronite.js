@@ -7,6 +7,7 @@ exports.pronite = async (req, res) => {                              //Pronite f
             const filteredData = userData.map((info) => {
                 return {
                    pronite : info.pronite_name,
+                   id : info.pronite_id
                 };
             });
 
