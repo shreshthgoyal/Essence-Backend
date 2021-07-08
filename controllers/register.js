@@ -133,13 +133,6 @@ exports.register = async (req, res) => {
                         }
                         const emailTemplate = createEmailTemplate();
     
-                        var mail = {                                                                                 //Sending a Verification mail to the user
-                            from: "Essence Fest <essence21webkriti@gmail.com>",                                      //Add your email here
-                            to: user.email,                                                                          //Add the email to whom you wish to send
-                            subject: 'Verify Account',
-                            html: emailTemplate
-                        }
-    
                         let transporter = nodemailer.createTransport({
                             service: 'gmail',
                             secure: true,
@@ -153,6 +146,14 @@ exports.register = async (req, res) => {
                                 accessToken: process.env.ACCESS_TOKEN                                                //Add your access token
                             }
                         })
+
+                        
+                        var mail = {                                                                                 //Sending a Verification mail to the user
+                            from: "Essence Fest <essence21webkriti@gmail.com>",                                      //Add your email here
+                            to: user.email,                                                                          //Add the email to whom you wish to send
+                            subject: 'Verify Account',
+                            html: emailTemplate
+                        }
                                                                               
                         transporter.sendMail(mail, function (err, info) {                                        //Sending a mail only if flag is true
                             if (err) {
