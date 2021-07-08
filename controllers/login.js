@@ -11,7 +11,7 @@ exports.login = async (req, res) => {
 
                 if (user.length === 0) {
                     res.status(400).json({
-                        error: "User does not exist, Sign Up first",
+                        error: "User is not registered, Sign Up first",
                     });
                 }
                 else {

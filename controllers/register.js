@@ -13,7 +13,7 @@ exports.register = async (req, res) => {
 
         if (arr.length != 0) {
             return res.status(400).json({
-                error: "User already exists",
+                error: "Email already there, No need to register again.",
             });
         }
         else {
