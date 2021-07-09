@@ -2,7 +2,7 @@
 require("./configs/dotenv");
 const express = require("express");
 const cors = require("cors");
-const userauth = require("./routes/auth");
+const user = require("./routes/user");
 const admin = require("./routes/admin");
 const events = require("./routes/events");
 const pronites = require("./routes/pronites");
@@ -27,7 +27,7 @@ app.get("/", (req, res) => {
   res.status(200).send("Engine Started, Ready to take off!");
 })
 
-app.use("/user", userauth);                    //Route for /user endpoint of API
+app.use("/user", user);                    //Route for /user endpoint of API
 app.use("/admin", admin);                      //Route for /admin endpoint of API
 app.use("/events", events);                       //Route for /events endpoint of API
 app.use("/pronites", pronites);                //Route for pronite registration
