@@ -11,7 +11,7 @@ exports.pronite = async (req, res) => {                              //Pronite f
                 };
             });
 
-            res.status(200).json({
+            res.status(200).json({                                               //Sending Information of user and pronites in response
                 message: "Pronite passes you bought are :",
                 data: filteredData,
             });

@@ -10,7 +10,7 @@ exports.event = async (req, res) => {                               //Event func
                 };
             });
 
-            res.status(200).json({
+            res.status(200).json({                            //Sending Information of user and events in response
                 message: "Events you registered to are :",
                 data: filteredData,
             });

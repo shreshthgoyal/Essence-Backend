@@ -13,7 +13,7 @@ exports.info = async (req, res) => {                        //Info function for 
                 };
             });
 
-            res.status(200).json({
+            res.status(200).json({                          //Sending user information of user
                 message: "User Info is :",
                 data: filteredData,
             });

@@ -13,7 +13,7 @@ exports.goodies = async (req, res) => {   //Goodies function for checking which 
                 };
             });
 
-            res.status(200).json({
+            res.status(200).json({                                       //Sending goodie information in response
                 message: "Goodies Status is :",
                 data: filteredData,
             });

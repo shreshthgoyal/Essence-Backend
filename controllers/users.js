@@ -13,7 +13,7 @@ exports.users = async (req, res) => {                              //Users funct
                 };
             });
 
-            res.status(200).json({
+            res.status(200).json({                               //Sending user information in response
                 message: "User Info is :",
                 data: filteredData,
             });

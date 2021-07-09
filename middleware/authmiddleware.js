@@ -13,8 +13,7 @@ exports.verifym = (req,res,next) => {
        
     jwt.verify(token, process.env.SECRET_KEY, (err,decoded)=>{         //Verify function for JWT
         if(err)
-        {
-          console.log(err); 
+        {                                                                          //If no token is present
           res.status(400).json({
             error: "User not Signed in, Sign in First.",
           });
@@ -30,12 +29,12 @@ exports.verifym = (req,res,next) => {
                   error: "User not registered. Register yourself first.",
                 });
               } else {
-                req.email = userEmail;                                        
+                req.email = userEmail;                                            //Sending email and ID of user if registered          
                 req.userid = info.rows[0].id;
                 next();
               }
         })
-        .catch((err) => {
+        .catch((err) => {                                                 //Handling errors
           console.log(err);
               res.status(500).json({
               error: "Database error occured here",

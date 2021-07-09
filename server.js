@@ -37,7 +37,8 @@ client.connect((err) => {                         //Connected Database
   if (err) {
     console.log(err);
   }
-  console.log("Data logging initiated!");
+  else {
+  console.log("Data logging initiated!");}
 });
 
 app.listen(port, () => {                                           //Inititating server

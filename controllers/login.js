@@ -20,7 +20,7 @@ exports.login = async (req, res) => {
                             res.status(500).json({
                                 error: "Server error",
                             });
-                        } else if (result === true && user[0].verified === true) {
+                        } else if (result === true && user[0].verified === true) {            //Checking if credentials match
                             const token = jwt.sign(
                                 {
                                     email: email,

@@ -14,7 +14,7 @@ exports.pronites = async (req, res) => {                               //Pronite
                 };
             });
 
-            res.status(200).json({
+            res.status(200).json({                                     //Sending Pronite information in response
                 message: "Pronite Status is :",
                 data: filteredData,
             });

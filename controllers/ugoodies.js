@@ -10,7 +10,7 @@ exports.goodies = async (req, res) => {                 //Goodies function for c
                 };
             });
 
-            res.status(200).json({
+            res.status(200).json({                                             //Sending Information of user and goodies in response
                 message: "Goodies you bought are :",
                 data: filteredData,
             });

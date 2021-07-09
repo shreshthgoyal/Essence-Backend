@@ -13,7 +13,7 @@ exports.events = async (req, res) => {    //Events function for checking which u
                 };
             });
 
-            res.status(200).json({
+            res.status(200).json({                                    //Sending data in response
                 message: "Event Status is :",
                 data: filteredData,
             });
